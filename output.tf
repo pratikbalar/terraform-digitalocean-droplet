@@ -11,7 +11,7 @@ locals {
   floating_ip_address          = "${compact(concat(digitalocean_floating_ip.floating_ip.*.ip_address, list("")))}"
 
   // join is used to return a string rather than a list as only a 1 or 0 loadbalancers will ever exist.
-  // Using the * value is needed as there may or moy not be a loadbalancer resource to get the ip from which causes errors.
+  // Using the * value is needed as there may or may not be a loadbalancer resource to get the ip from which causes errors.
   loadbalancer_id = "${join("", compact(concat(digitalocean_loadbalancer.loadbalancer.*.id, list(""))))}"
 
   loadbalancer_ip = "${join("", compact(concat(digitalocean_loadbalancer.loadbalancer.*.ip, list(""))))}"
